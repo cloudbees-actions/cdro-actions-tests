@@ -1,0 +1,57 @@
+name: 'Ruslan: Test RunProcedure'
+
+on:
+  workflow_dispatch:
+
+env:
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+  CDRO_URL: ${{ secrets.CDRO_URL }}
+
+jobs:
+  run-procedure-job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run procedure
+        uses: cloudbees/cdro-actions/run-procedure-test@dsl-actual-parameters
+        with:
+          projectName: AAA-Project
+          procedureName: AAA-Procedure
+
+
+  run-procedure-job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run procedure
+        uses: cloudbees/cdro-actions/run-procedure-test@dsl-actual-parameters
+        with:
+          projectName: AAA-Project
+          procedureName: AAA-Procedure
+          actualParameter: |
+            nestedArg1: Github Action job-2
+            nestedArg2: Github Action job-2
+            
+
+  run-procedure-job-3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run procedure
+        uses: cloudbees/cdro-actions/run-procedure-test@dsl-actual-parameters
+        with:
+          projectName: AAA-Project
+          procedureName: AAA-Procedure
+          actualParameter: |-
+            nestedArg1: Github Action job-3
+            nestedArg2: Github Action job-3
+
+
+  run-procedure-job-4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run procedure
+        uses: cloudbees/cdro-actions/run-procedure-test@dsl-actual-parameters
+        with:
+          projectName: AAA-Project
+          procedureName: AAA-Procedure
+          actualParameter: |+
+            nestedArg1: Github Action job-4
+            nestedArg2: Github Action job-4

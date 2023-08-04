@@ -1,0 +1,168 @@
+name: 'Ruslan: Test EvalDSL + broken DSL'
+
+on:
+  workflow_dispatch:
+
+env:
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+  CDRO_URL: ${{ secrets.CDRO_URL }}
+
+jobs:
+#  eval-dslinput-no-args-job:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Run EvalDSL Action
+#        id: eval-dsl
+#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        with:
+#          dsl: |
+#            project 'AAB-Project', {
+#              description = 'AAB-Project description'
+#
+#              procedure 'AAB-Procedure', {
+#                description = "Procedure description"
+#              }
+#            }
+#
+#      - name: Echo eval-dsl response
+#        run: echo "${{ steps.eval-dsl.outputs.response }}"
+#
+#
+#  eval-dslinput-no-args-job-2:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Run EvalDSL Action
+#        id: eval-dsl
+#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        with:
+#          dsl: getProjects()
+#
+#      - name: Echo eval-dsl response
+#        run: echo "${{ steps.eval-dsl.outputs.response }}"
+#
+#
+#  eval-dslinput-with-args-job:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Run EvalDSL Action
+#        id: eval-dsl
+#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        with:
+#          dsl: |
+#            def projectNameValue = args.projectName
+#            def projectDescriptionValue = args.projectDescription
+#            def procedureNameValue = args.procedureName
+#
+#            project projectNameValue, {
+#              description = projectDescriptionValue
+#
+#              procedure procedureNameValue, {
+#                description = "Procedure description"
+#              }
+#            }
+#          dsl-args: |
+#            projectName: AAA-Project
+#            projectDescription: AAA-Project description
+#            procedureName: AAA-Procedure
+#
+#      - name: Echo eval-dsl response
+#        run: echo "${{ steps.eval-dsl.outputs.response }}"
+#
+#
+#  eval-dslfile-no-args-job:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
+#
+#      - name: Run EvalDSL Action
+#        id: eval-dsl
+#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        with:
+#          dsl-file: ./dsl/get-projects.groovy
+#
+#      - name: Echo eval-dsl response
+#        run: echo "${{ steps.eval-dsl.outputs.response }}"
+#
+#
+#  eval-dslfile-with-args-job:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
+#
+#      - name: Run EvalDSL Action
+#        id: eval-dsl
+#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        with:
+#          dsl-file: ./dsl/get-projects.groovy
+#          dsl-args: |
+#            projectName: My project
+#            projectDescription: My project description
+#            procedureName: My procedure
+#
+#      - name: Echo eval-dsl response
+#        run: echo "${{ steps.eval-dsl.outputs.response }}"
+
+
+  eval-with-nested-args-job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: runProcedure args
+          dsl-args: |
+            projectName: AAA-Project
+            procedureName: AAA-Procedure
+
+  eval-with-nested-args-job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: runProcedure args
+          dsl-args: |
+            projectName: AAA-Project
+            procedureName: AAA-Procedure
+            actualParameter: |
+              nestedArg1: Github Action job-2
+              nestedArg2: Github Action job-2
+
+  eval-with-nested-args-job-3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: runProcedure args
+          dsl-args: |
+            projectName: AAA-Project
+            procedureName: AAA-Procedure
+            actualParameter: |+
+              nestedArg1: Github Action job-3
+              nestedArg2: Github Action job-3
+
+  eval-with-nested-args-job-4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: runProcedure args
+          dsl-args: |
+            projectName: AAA-Project
+            procedureName: AAA-Procedure
+            actualParameter: |-
+              nestedArg1: Github Action job-4
+              nestedArg2: Github Action job-4
+            
+
+  eval-with-broken-dsl-job-5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: getProject()

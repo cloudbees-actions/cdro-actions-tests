@@ -1,0 +1,61 @@
+name: Test run-process action
+
+on:
+  workflow_dispatch:
+  
+env:
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN_2 }}
+  CDRO_URL: ${{ secrets.CDRO_URL }}
+
+jobs: 
+  run-process-job:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create application process
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: |
+              project "GHA Test",{
+                environment "QA",{
+                  environmentTier "AppServer",{
+                    resource "AppServer_QA",
+                      hostName: getResource(resourceName: "local").hostName,
+                      hostType: "CONCURRENT"
+                  }
+                }
+                application "GHA Application",{
+                  applicationTier "App"
+                  process "GHA Process",{
+                    formalParameter "Input1"
+                    formalParameter "Input2"
+                    formalParameter "Input3", type: "textarea"
+                    processStep "echo",
+                      applicationTierName: "App",
+                      actualParameter: [ commandToRun: 'echo'],
+                      subprocedure: 'RunCommand',
+                      subproject: '/plugins/EC-Core/project'
+                  }
+                  tierMap 'QA', {
+                    applicationName = applicationName
+                    environmentName = tierMapName
+                    environmentProjectName = 'GHA Test'
+                    tierMapping 'App-AppServer', {
+                      applicationTierName = 'App'
+                      environmentTierName = 'AppServer'
+                    }
+                  }    
+                }
+              }
+          
+      - name: Run process
+        uses: cloudbees/cdro-actions/run-process@main
+        with:
+          projectName: GHA Test
+          applicationName: GHA Application
+          processName: GHA Process
+          environmentName: QA
+          actualParameter: |
+            Input1: xyz
+            Input2: abc
+            Input3: "line1\nline2"

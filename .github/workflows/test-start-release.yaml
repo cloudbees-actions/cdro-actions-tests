@@ -1,0 +1,38 @@
+name: Test start-release action
+
+on:
+  workflow_dispatch:
+  
+env:
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN_2 }}
+  CDRO_URL: ${{ secrets.CDRO_URL }}
+
+jobs: 
+  start-release-job:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Create release
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: |
+            project "GHA Test",{
+              release "GHA Release",{
+                pipeline "GHA release pipeline",{
+                  formalParameter "Input1"
+                  formalParameter "Input2"
+                  formalParameter "Input3", type: "textarea"
+                  stage "Stage 1"
+                }
+              }
+            }
+          
+      - name: Start release
+        uses: cloudbees/cdro-actions/start-release@main
+        with:
+          projectName: GHA Test
+          releaseName: GHA Release
+          pipelineParameter: |
+            Input1: xyz
+            Input2: abc
+            Input3: "line1\nline2"

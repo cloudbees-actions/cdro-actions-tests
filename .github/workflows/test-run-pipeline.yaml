@@ -1,0 +1,36 @@
+name: Test run-pipeline action
+
+on:
+  workflow_dispatch:
+  
+env:
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN_2 }}
+  CDRO_URL: ${{ secrets.CDRO_URL }}
+
+jobs: 
+  run-pipeline-job:
+    runs-on: ubuntu-latest
+    steps:
+          
+      - name: Create pipeline
+        uses: cloudbees/cdro-actions/eval-dsl@main
+        with:
+          dsl: |
+            project "GHA Test",{
+              pipeline "GHA Pipeline",{
+                formalParameter "Input1"
+                formalParameter "Input2"
+                formalParameter "Input3", type: "textarea"
+                stage "Stage 1"
+              }
+            }
+            
+      - name: Run pipeline
+        uses: cloudbees/cdro-actions/run-pipeline@main
+        with:
+          projectName: GHA Test
+          pipelineName: GHA Pipeline
+          actualParameter: |
+            Input1: xyz
+            Input2: abc
+            Input3: "line1\nline2"
