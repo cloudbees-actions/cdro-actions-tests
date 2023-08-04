@@ -13,12 +13,12 @@ jobs:
     steps:
        
       - name: Create project if needed
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: project "GHA Test"
             
       - name: Create release
-        uses: cloudbees/cdro-actions/create-release-from-template@main
+        uses: cloudbees-actions/create-release-from-template@main
         with:
           templateProjectName: Electric Cloud
           templateCatalogName: Releases
@@ -31,7 +31,7 @@ jobs:
             releaseEndDate: 2023-08-02     
       
       - name: Start release
-        uses: cloudbees/cdro-actions/start-release@main
+        uses: cloudbees-actions/start-release@main
         with:
           projectName: GHA Test
           releaseName: GHA Release from template

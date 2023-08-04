@@ -13,7 +13,7 @@ jobs:
 #    steps:
 #      - name: Run EvalDSL Action
 #        id: eval-dsl
-#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        uses: cloudbees-actions/eval-dsl@main
 #        with:
 #          dsl: |
 #            project 'AAB-Project', {
@@ -33,7 +33,7 @@ jobs:
 #    steps:
 #      - name: Run EvalDSL Action
 #        id: eval-dsl
-#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        uses: cloudbees-actions/eval-dsl@main
 #        with:
 #          dsl: getProjects()
 #
@@ -46,7 +46,7 @@ jobs:
 #    steps:
 #      - name: Run EvalDSL Action
 #        id: eval-dsl
-#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        uses: cloudbees-actions/eval-dsl@main
 #        with:
 #          dsl: |
 #            def projectNameValue = args.projectName
@@ -77,7 +77,7 @@ jobs:
 #
 #      - name: Run EvalDSL Action
 #        id: eval-dsl
-#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        uses: cloudbees-actions/eval-dsl@main
 #        with:
 #          dsl-file: ./dsl/get-projects.groovy
 #
@@ -93,7 +93,7 @@ jobs:
 #
 #      - name: Run EvalDSL Action
 #        id: eval-dsl
-#        uses: cloudbees/cdro-actions/eval-dsl@main
+#        uses: cloudbees-actions/eval-dsl@main
 #        with:
 #          dsl-file: ./dsl/get-projects.groovy
 #          dsl-args: |
@@ -109,7 +109,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -120,7 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -134,7 +134,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -148,7 +148,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -163,6 +163,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: getProject()

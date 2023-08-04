@@ -13,7 +13,7 @@ jobs:
     steps:
     
       - name: Create release
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: |
             project "GHA Test",{
@@ -28,7 +28,7 @@ jobs:
             }
           
       - name: Start release
-        uses: cloudbees/cdro-actions/start-release@main
+        uses: cloudbees-actions/start-release@main
         with:
           projectName: GHA Test
           releaseName: GHA Release

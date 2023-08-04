@@ -13,7 +13,7 @@ jobs:
     steps:
           
       - name: Create pipeline
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: |
             project "GHA Test",{
@@ -26,7 +26,7 @@ jobs:
             }
             
       - name: Run pipeline
-        uses: cloudbees/cdro-actions/run-pipeline@main
+        uses: cloudbees-actions/run-pipeline@main
         with:
           projectName: GHA Test
           pipelineName: GHA Pipeline

@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: Create application process
-        uses: cloudbees/cdro-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@main
         with:
           dsl: |
               project "GHA Test",{
@@ -49,7 +49,7 @@ jobs:
               }
           
       - name: Run process
-        uses: cloudbees/cdro-actions/run-process@main
+        uses: cloudbees-actions/run-process@main
         with:
           projectName: GHA Test
           applicationName: GHA Application
