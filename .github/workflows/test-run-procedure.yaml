@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN_2 }}
+  CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
   CDRO_URL: ${{ secrets.CDRO_URL }}
 
 jobs: 
