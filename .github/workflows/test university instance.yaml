@@ -21,6 +21,7 @@ jobs:
                 formalParameter "Input1"
                 formalParameter "Input2"
                 formalParameter "Input3", type: "textarea"
+                step "echo", command: "echo test"
               }
             }          
           
