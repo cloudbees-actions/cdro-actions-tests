@@ -1,4 +1,4 @@
-name: Test run-procedure action
+name: Test run-procedure on university instance
 
 on:
   workflow_dispatch:
