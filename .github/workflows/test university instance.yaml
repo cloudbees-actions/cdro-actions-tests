@@ -1,0 +1,35 @@
+name: Test run-procedure action
+
+on:
+  workflow_dispatch:
+  
+env:
+  CDRO_TOKEN: ${{ secrets.UNIVERSITY_TOKEN }}
+  CDRO_URL: ${{ secrets.UNIVERSITY_URL }}
+
+jobs: 
+  run-procedure-job:
+    runs-on: ubuntu-latest
+    steps:
+         
+      - name: Create procedure
+        uses: cloudbees-actions/eval-dsl@main
+        with:
+          dsl: |
+            project "GHA Test",{
+              procedure "GHA Procedure",{
+                formalParameter "Input1"
+                formalParameter "Input2"
+                formalParameter "Input3", type: "textarea"
+              }
+            }          
+          
+      - name: Run procedure
+        uses: cloudbees-actions/run-procedure@main
+        with:
+          projectName: GHA Test
+          procedureName: GHA Procedure
+          actualParameter: |
+            Input1: xyz
+            Input2: abc
+            Input3: "line1\nline2"
