@@ -109,7 +109,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -120,7 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -134,7 +134,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: runProcedure args
           dsl-args: |
@@ -148,7 +148,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: runProcedure args
           dsl-args: |
