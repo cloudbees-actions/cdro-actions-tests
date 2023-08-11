@@ -13,7 +13,7 @@ jobs:
     steps:
     
       - name: Create release
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: |
             project "GHA Test",{
@@ -28,7 +28,7 @@ jobs:
             }
           
       - name: Start release
-        uses: cloudbees-actions/start-release@main
+        uses: cloudbees-actions/start-release@v1
         with:
           projectName: GHA Test
           releaseName: GHA Release

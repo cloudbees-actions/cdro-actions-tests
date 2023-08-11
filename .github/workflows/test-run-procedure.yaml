@@ -13,7 +13,7 @@ jobs:
     steps:
          
       - name: Create procedure
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl: |
             project "GHA Test",{
@@ -25,7 +25,7 @@ jobs:
             }          
           
       - name: Run procedure
-        uses: cloudbees-actions/run-procedure@main
+        uses: cloudbees-actions/run-procedure@v1
         with:
           projectName: GHA Test
           procedureName: GHA Procedure
