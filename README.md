@@ -1,2 +1,3 @@
 # cdro-actions-tests
 
+\n
