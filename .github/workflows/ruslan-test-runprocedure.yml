@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run procedure
-        uses: cloudbees-actions/run-procedure-test@dsl-actual-parameters
+        uses: cloudbees-github-actions/run-procedure-test@dsl-actual-parameters
         with:
           projectName: AAA-Project
           procedureName: AAA-Procedure
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run procedure
-        uses: cloudbees-actions/run-procedure-test@dsl-actual-parameters
+        uses: cloudbees-github-actions/run-procedure-test@dsl-actual-parameters
         with:
           projectName: AAA-Project
           procedureName: AAA-Procedure
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run procedure
-        uses: cloudbees-actions/run-procedure-test@dsl-actual-parameters
+        uses: cloudbees-github-actions/run-procedure-test@dsl-actual-parameters
         with:
           projectName: AAA-Project
           procedureName: AAA-Procedure
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run procedure
-        uses: cloudbees-actions/run-procedure-test@dsl-actual-parameters
+        uses: cloudbees-github-actions/run-procedure-test@dsl-actual-parameters
         with:
           projectName: AAA-Project
           procedureName: AAA-Procedure
