@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: Create application process
-        uses: cloudbees-actions/eval-dsl@v1
+        uses: cloudbees-github-actions/eval-dsl@v1
         with:
           dsl: |
               project "GHA Test",{
@@ -49,7 +49,7 @@ jobs:
               }
           
       - name: Run process
-        uses: cloudbees-actions/run-process@v1
+        uses: cloudbees-github-actions/run-process@v1
         with:
           projectName: GHA Test
           applicationName: GHA Application
