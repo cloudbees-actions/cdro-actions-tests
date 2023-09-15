@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-github-actions/eval-dsl@fix_to_allow_to_use_unverified_ssl_certificates
+        uses: cloudbees-github-actions/eval-dsl@v1
         env:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
           CDRO_URL: ${{ secrets.CDRO_URL }}
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run EvalDSL Action
-        uses: cloudbees-github-actions/eval-dsl@fix_to_allow_to_use_unverified_ssl_certificates
+        uses: cloudbees-github-actions/eval-dsl@v1
         env:
           CDRO_TOKEN: ${{ secrets.TEST_UNIVERSITY_TOKEN }}
           CDRO_URL: ${{ secrets.TEST_UNIVERSITY_URL }}
