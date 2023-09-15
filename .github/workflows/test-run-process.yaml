@@ -59,3 +59,58 @@ jobs:
             Input1: xyz
             Input2: abc
             Input3: "line1\nline2"
+            
+  run-process-job-unresolved-ssl:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create application process
+        uses: cloudbees-github-actions/eval-dsl@v1
+        with:
+          dsl: |
+              project "GHA Test",{
+                environment "QA",{
+                  environmentTier "AppServer",{
+                    resource "AppServer_QA",
+                      hostName: getResource(resourceName: "local").hostName,
+                      hostType: "CONCURRENT"
+                  }
+                }
+                application "GHA Application",{
+                  applicationTier "App"
+                  process "GHA Process",{
+                    formalParameter "Input1"
+                    formalParameter "Input2"
+                    formalParameter "Input3", type: "textarea"
+                    processStep "echo",
+                      applicationTierName: "App",
+                      actualParameter: [ commandToRun: 'echo'],
+                      subprocedure: 'RunCommand',
+                      subproject: '/plugins/EC-Core/project'
+                  }
+                  tierMap 'QA', {
+                    applicationName = applicationName
+                    environmentName = tierMapName
+                    environmentProjectName = 'GHA Test'
+                    tierMapping 'App-AppServer', {
+                      applicationTierName = 'App'
+                      environmentTierName = 'AppServer'
+                    }
+                  }    
+                }
+              }
+          ignore-unverified-cert: true
+          
+      - name: Run process
+        uses: cloudbees-github-actions/run-process@v1
+        with:
+          projectName: GHA Test
+          applicationName: GHA Application
+          processName: GHA Process
+          environmentName: QA
+          actualParameter: |
+            Input1: xyz
+            Input2: abc
+            Input3: "line1\nline2"
+          ignore-unverified-cert: true
+    
