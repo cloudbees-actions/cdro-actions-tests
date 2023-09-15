@@ -25,3 +25,4 @@ jobs:
           CDRO_URL: ${{ secrets.TEST_UNIVERSITY_URL }}
         with:
           dsl: getProjects()
+          ignore-unverified-cert: true
