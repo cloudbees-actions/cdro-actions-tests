@@ -1,0 +1,27 @@
+name: 'Test EvalDSL with resolved/unresolved SSL'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  eval-with-resolved-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees-github-actions/eval-dsl@fix_to_allow_to_use_unverified_ssl_certificates
+        env:
+          CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+          CDRO_URL: ${{ secrets.CDRO_URL }}
+        with:
+          dsl: getProjects()
+
+  eval-with-unresolved-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run EvalDSL Action
+        uses: cloudbees-github-actions/eval-dsl@fix_to_allow_to_use_unverified_ssl_certificates
+        env:
+          CDRO_TOKEN: ${{ secrets.UNIVERSITY_TOKEN }}
+          CDRO_URL: ${{ secrets.UNIVERSITY_URL }}
+        with:
+          dsl: getProjects()
